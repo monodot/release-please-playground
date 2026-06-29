@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/monodot/release-please-playground/compare/library-v1.1.0...library-v1.1.1) (2026-06-29)
+
+
+### Bug Fixes
+
+* **library:** writey liney loggy thing ([#7](https://github.com/monodot/release-please-playground/issues/7)) ([f8e1c3e](https://github.com/monodot/release-please-playground/commit/f8e1c3efd65daa75302d50dfc3c0f441567956a9))
+
 ## [1.1.0](https://github.com/monodot/release-please-playground/compare/library-v1.0.0...library-v1.1.0) (2026-06-29)
 
 

@@ -1,0 +1,57 @@
+name: publish
+
+# Dummy publish workflow. It triggers on a component tag, then checks that
+# the version in the tag matches the version committed in the repo. This is
+# the behaviour we want to prove: release-please bumps the version file and
+# creates the matching tag on the same commit, so they always agree.
+#
+# Note: a tag created by release-please using the default GITHUB_TOKEN will
+# NOT trigger this workflow. Add a RELEASE_PLEASE_TOKEN secret to make it
+# fire automatically, or push a tag by hand to test it.
+
+on:
+  push:
+    tags:
+      - '*-v*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check that the tag and the committed version match
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+          component="${tag%-v*}"
+          tag_version="${tag#*-v}"
+
+          echo "Tag:         $tag"
+          echo "Component:   $component"
+          echo "Tag version: $tag_version"
+
+          case "$component" in
+            frontend|library)
+              repo_version="$(node -p "require('./$component/package.json').version")"
+              ;;
+            runner)
+              repo_version="$(cat "$component/version.txt")"
+              ;;
+            *)
+              echo "Unknown component: $component" >&2
+              exit 1
+              ;;
+          esac
+
+          echo "Version in repo: $repo_version"
+          echo
+
+          if [ "$tag_version" = "$repo_version" ]; then
+            echo "PASS: the tag and the committed version match. This is what we would publish."
+          else
+            echo "FAIL: the tag says $tag_version but the repo says $repo_version." >&2
+            exit 1
+          fi

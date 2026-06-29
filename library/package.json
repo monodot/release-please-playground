@@ -1,0 +1,9 @@
+{
+  "name": "library",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Example library component for testing release-please.",
+  "scripts": {
+    "build": "echo \"building library\""
+  }
+}

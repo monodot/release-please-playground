@@ -1,0 +1,9 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Example frontend component for testing release-please.",
+  "scripts": {
+    "build": "echo \"building frontend\""
+  }
+}

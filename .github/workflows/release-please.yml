@@ -1,0 +1,23 @@
+name: release-please
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          # By default this uses release-please-config.json and
+          # .release-please-manifest.json from the repo root.
+          #
+          # GITHUB_TOKEN works, but tags it creates will NOT trigger the
+          # publish workflow. To make publishing fire automatically, add a
+          # personal access token as the RELEASE_PLEASE_TOKEN secret.
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}

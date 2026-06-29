@@ -15,7 +15,7 @@ jobs:
         env:
           TITLE: ${{ github.event.pull_request.title }}
         run: |
-          pattern='^(feat|fix|docs|chore|refactor|test|ci)\((runner|frontend|library)\)!?: .+'
+          pattern='^(feat|fix|docs|chore|refactor|test|ci)(\((runner|frontend|library)\))?!?: .+'
           if ! [[ "$TITLE" =~ $pattern ]]; then
             echo "::error::PR title does not match the conventional commit format."
             echo "Got:      $TITLE"

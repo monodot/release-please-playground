@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/monodot/release-please-playground/compare/runner-v1.1.0...runner-v1.2.0) (2026-07-01)
+
+
+### Features
+
+* update Dockerfile and add new log feature in frontend ([#9](https://github.com/monodot/release-please-playground/issues/9)) ([33d2ed0](https://github.com/monodot/release-please-playground/commit/33d2ed063bf7852d8247bf03c6b6c90691ccff88))
+
+
+### Bug Fixes
+
+* Add echo command for 'doris' in Dockerfile ([3224d37](https://github.com/monodot/release-please-playground/commit/3224d378e9416615742c600d28f9bcc0d7a63f24))
+
 ## [1.1.0](https://github.com/monodot/release-please-playground/compare/runner-v1.0.0...runner-v1.1.0) (2026-06-29)
 
 
